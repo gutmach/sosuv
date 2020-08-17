@@ -1,0 +1,36 @@
+// below parses https://www.citco.com/who-we-are/our-people/ 
+var fname='', image='', title='', phone='', email='';
+var items='', strings='', arr = new Array;
+items = document.querySelectorAll(".col-xs-12.col-sm-6.col-md-4.contact");
+  for (i=0; i<42; i++){
+    image = items[i].getElementsByTagName("img")[0].src;
+    fname = items[i].getElementsByTagName("h4")[0].textContent;
+    title = items[i].getElementsByTagName("p")[0].textContent;
+    email = items[i].querySelector("a[href^=mailto]").href;
+    email = email.substr(7);
+    phone = items[i].getElementsByTagName("span")[1].textContent;
+    if (phone == "T") {phone = items[i].getElementsByTagName("span")[2].textContent;}
+arr[i] = fname+"\t"+title+"\t"+phone+"\t"+email+"\t"+image;
+strings += arr[i] + "\r\n";
+  }
+console.log(strings);
+
+
+/* below for narrower version where you advance person to person https://www.citco.com/our-thinking/latest-news/announcement-of-new-executive-vice-president-and-head-of-real-assets-north-america/ */
+
+var fname='', image='', title='', phone='', email='', loc='';
+var items='', strings='', arr = new Array;
+items = document.querySelectorAll(".col-sm-12.col-xs-12.contact.slick-slide");
+  for (i=0; i<items.length-1; i++){
+    fname = items[i].getElementsByTagName("h4")[0].textContent;
+    image = items[i].getElementsByTagName("img")[0].src;
+    title = items[i].getElementsByTagName("p")[0].textContent;
+    phone = items[i].getElementsByTagName("span")[1].textContent;
+    email = items[i].getElementsByTagName("a")[0].href;
+if (typeof email === "undefined") {email="";}
+    loc = items[i].getElementsByTagName("span")[5].textContent;
+if (typeof loc === "undefined") {loc="";}
+arr[i] = fname+"\t"+title+"\t"+phone+"\t"+email+"\t"+loc+"\t"+image;
+strings += arr[i] + "\r\n";
+  }
+console.log(strings);
