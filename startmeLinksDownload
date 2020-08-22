@@ -1,0 +1,29 @@
+// version to paste in your console
+var strings='', startnum, endnum, btitle='', burl='', arr = new Array(), lists = document.querySelectorAll("ul.bookmark-widget__list li a");
+var s;if(window.getSelection){s=window.getSelection();}else{s=document.selection.createRange().text;}
+var t=prompt('Enter URL of first StartMe link to download',s);
+t=t.trim();
+endnum=prompt('Enter number of links starting from there to download (if you do not enter a number in range, you will get all subsequent links on the page',s);
+endnum=endnum.trim();
+endnum=Number(endnum);
+for (var i = 0; i < lists.length; ++i) {
+  if (lists[i].href == t) { startnum=i; }
+  }
+if (startnum < 0 || startnum > lists.length) { startnum = 0; }
+if (startnum + endnum > lists.length) { endnum = lists.length - startnum; }
+for (var j = startnum; j <= startnum+endnum; ++j) {
+  btitle = lists[j].title.split(/\r?\n/, 1)[0];
+  burl = lists[j].href;
+  arr[j] = btitle+'\t'+burl;
+  strings += arr[j]+'\r\n';
+  }
+var pom = document.createElement('a');
+var csvContent=strings;
+var blob = new Blob([csvContent],{type: 'text/tsv;charset=utf-8;'});
+var url = URL.createObjectURL(blob);
+pom.href = url;
+pom.setAttribute('download', 'startme.tsv');
+pom.click();
+
+// version to save as a bookmarklet
+javascript:(function()%7Bvar%20strings%3D''%2C%20startnum%2C%20endnum%2C%20btitle%3D''%2C%20burl%3D''%2C%20arr%20%3D%20new%20Array()%2C%20lists%20%3D%20document.querySelectorAll(%22ul.bookmark-widget__list%20li%20a%22)%3Bvar%20s%3Bif(window.getSelection)%7Bs%3Dwindow.getSelection()%3B%7Delse%7Bs%3Ddocument.selection.createRange().text%3B%7Dvar%20t%3Dprompt('Enter%20URL%20of%20first%20StartMe%20link%20to%20download'%2Cs)%3Bt%3Dt.trim()%3Bendnum%3Dprompt('Enter%20number%20of%20links%20starting%20from%20there%20to%20download%20(if%20you%20do%20not%20enter%20a%20number%20in%20range%2C%20you%20will%20get%20all%20subsequent%20links%20on%20the%20page'%2Cs)%3Bendnum%3Dendnum.trim()%3Bendnum%3DNumber(endnum)%3Bfor%20(var%20i%20%3D%200%3B%20i%20%3C%20lists.length%3B%20%2B%2Bi)%20%7Bif%20(lists%5Bi%5D.href%20%3D%3D%20t)%20%7B%20startnum%3Di%3B%20%7D%7Dif%20(startnum%20%3C%200%20%7C%7C%20startnum%20%3E%20lists.length)%20%7B%20startnum%20%3D%200%3B%20%7Dif%20(startnum%20%2B%20endnum%20%3E%20lists.length)%20%7B%20endnum%20%3D%20lists.length%20-%20startnum%3B%20%7Dfor%20(var%20j%20%3D%20startnum%3B%20j%20%3C%3D%20startnum%2Bendnum%3B%20%2B%2Bj)%20%7Bbtitle%20%3D%20lists%5Bj%5D.title.split(%2F%5Cr%3F%5Cn%2F%2C%201)%5B0%5D%3Bburl%20%3D%20lists%5Bj%5D.href%3Barr%5Bj%5D%20%3D%20btitle%2B'%5Ct'%2Bburl%3Bstrings%20%2B%3D%20arr%5Bj%5D%2B'%5Cr%5Cn'%3B%7Dvar%20pom%20%3D%20document.createElement('a')%3Bvar%20csvContent%3Dstrings%3Bvar%20blob%20%3D%20new%20Blob(%5BcsvContent%5D%2C%7Btype%3A%20'text%2Ftsv%3Bcharset%3Dutf-8%3B'%7D)%3Bvar%20url%20%3D%20URL.createObjectURL(blob)%3Bpom.href%20%3D%20url%3Bpom.setAttribute('download'%2C%20'startme.tsv')%3Bpom.click()%7D)()
