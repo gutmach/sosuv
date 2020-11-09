@@ -1,0 +1,25 @@
+var t=prompt('Enter a username OR Firstname Lastname you want to search for on various dev community sites'+'\r\n\r\n'+'Depending on who you searched for, some upcoming results will not be useful: feel free to close or minimize to reveal the windows beneath','');
+t=t.replace(/^\s+|\s+$|"/g,'');
+if(t){
+setTimeout(function(){
+window.open('https://github.com/search?q=%22'+t+'%22&ref=cmdform&type=Users','new0','height=600,width=800,left=20,top=20,resizable=1,scrollbars=1,status=0,toolbar=1')
+}, 20);
+setTimeout(function(){
+window.open('https://www.google.com/search?q=site%3Astackoverflow.com%2Fusers+intitle%3Auser+%22'+t+'%22&num=100&newwindow=1&filter=0','new1','height=600,width=800,left=40,top=40,resizable=1,scrollbars=1,status=0,toolbar=1')
+}, 50);
+setTimeout(function(){
+window.open('https://www.google.com/search?q=site%3Adev.to+%22+'+t+'%22&num=100&newwindow=1&filter=0','new2','height=600,width=800,left=60,top=60,resizable=1,scrollbars=1,status=0,toolbar=1')
+}, 80);
+setTimeout(function(){
+window.open('https://www.google.com/search?q=site%3Ahackernoon.com%2Fu%2F+%22'+t+'%22&num=100&newwindow=1&filter=0','new3','height=600,width=800,left=80,top=80,resizable=1,scrollbars=1,status=0,toolbar=1')
+}, 110);
+setTimeout(function(){
+window.open('https://www.google.com/search?q=site%3Amedium.com+%22'+t+'%22&num=100&newwindow=1&filter=0','new4','height=600,width=800,left=100,top=100,resizable=1,scrollbars=1,status=0,toolbar=1')
+}, 140);
+setTimeout(function(){
+window.open('https://www.google.com/search?q=site%3Ahashnode.com+%22'+t+'%22&num=100&newwindow=1&filter=0','new5','height=600,width=800,left=120,top=120,resizable=1,scrollbars=1,status=0,toolbar=1')
+}, 170);
+setTimeout(function(){
+window.open('https://www.google.com/search?q=site%3Ahackerrank.com+"contest+score"+"archive+score"+%22'+t+'%22&num=100&newwindow=1&filter=0','new6','height=600,width=800,left=140,top=140,resizable=1,scrollbars=1,status=0,toolbar=1')
+}, 200);
+}
