@@ -1,0 +1,23 @@
+// how to scrape https://changemakers2020.diversityhub.pl/eventy/prelegenci/
+// below can be saved as a bookmarklet in your browser, outputs to Excel-compatible .tsv file
+javascript:function(){
+var q = document.querySelectorAll(".cse-speaker.cse-speaker-data");
+var name="", title="", bio="", image="", strings= "Name"+"\t"+"Title"+"\t"+"Bio"+"\t"+"Image"+"\r\n", arr = new Array;
+for (i = 0; i < q.length; i++) {
+  name = q[i].getAttribute('data-name').toString();
+  title = q[i].getAttribute('data-posi').toString();
+  bio = q[i].getAttribute('data-desc').toString();
+  image = q[i].getAttribute('data-img').toString();
+  bio = bio.replace( /(<([^>]+)>)/ig, ' ');
+  bio = bio.replace(/[\r\n\x0B\x0C\u0085\u2028\u2029]+/g,' ');
+  arr[i] = name+'\t'+title+'\t'+bio+'\t'+image;
+  strings += arr[i]+'\r\n';
+}
+var pom = document.createElement('a');
+var csvContent=strings; // load our csv/tsv data 
+var blob = new Blob([csvContent],{type: 'text/csv;charset=utf-8;'});
+var url = URL.createObjectURL(blob);
+pom.href = url;
+pom.setAttribute('download', 'speakers.tsv');
+pom.click();
+}()
