@@ -8,6 +8,9 @@ Note that websites change their format periodically, so if -qQT3 ever changes to
 4) Click the Console tab in the browser window pane (just to the right of the Elements tab you're on). Copy the following code starting with var arr and ending with pom.click();
 5) Make sure to click just after the > prompt at the bottom of Console before you hit paste (Ctrl+v), then hit the Enter key
 6) In a few seconds, you will see the file instagram-search-result-urls.tsv appear in your Downloads folder (usually at bottom left corner of your screen). Double-click it to open it in Excel and you'll see the links to all the matching profiles (I got 54)!
+NOTE: Mike Santoro created a more flexible IG people-focused Google Custom search engine so you might prefer this:
+https://cse.google.com/cse?cx=61711a67cdd5a42d9#gsc.tab=0
+
 Copy starting below this line /*
 
 var arr = new Array, links, strings='';
